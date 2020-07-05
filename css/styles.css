@@ -116,44 +116,44 @@ section {
     color: #fff;
 }
 
+/* Back To Top Style */
 .top-link {
     transition: all .25s ease-in-out;
     position: fixed;
     bottom: 0;
     right: 0;
     display: inline-flex;
-     
-   cursor: pointer;
-   align-items: center;
-   justify-content: center;
-   margin: 0 3em 3em 0;
-   border-radius: 50%;
-   padding: .25em;
-   width: 80px;
-   height: 80px;
-   background-color: #F8F8F8;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    margin: 0 3em 3em 0;
+    border-radius: 50%;
+    padding: .25em;
+    width: 80px;
+    height: 80px;
+    background-color: #F8F8F8;
 }
 
 .show {
     visibility: visible;
     opacity: 1;
-  }
+}
    
-  .hide {
+.hide {
     visibility: hidden;
     opacity: 0;
-  }
+}
 
-  svg {
+svg {
     fill: #000;
     width: 24px;
     height: 12px;
-   }
+}
     
-   svg:hover {
+svg:hover {
     background-color: #E8E8E8;
     fill: #000000;
-   }
+}
 
 
 /* ---- Theme Rules ---- */

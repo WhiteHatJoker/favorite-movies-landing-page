@@ -21,6 +21,7 @@ const fragment = document.createDocumentFragment();
 const navBar = document.getElementById('navbar__list');
 const sections = document.querySelectorAll('main section');
 const header = document.querySelector('.page__header');
+const scrollToTopButton = document.getElementById('js-top');
 let isScrolling;
 /**
  * End Global Variables
@@ -52,7 +53,6 @@ function addSectionClass(section) {
 function buildScroll(menuLink) {
     menuLink.addEventListener('click', (event) => {
         event.preventDefault();
-        console.log('it is running');
         document.querySelector(menuLink.getAttribute("href")).scrollIntoView({
             behavior: 'smooth'
         });
@@ -91,6 +91,24 @@ function hideHeader() {
         header.style.display = "none";
 	}, 1000);
 }
+
+// Show back to top button
+function showBackToTop() {
+    const currentScroll = window.scrollY;
+    if (currentScroll>0) {
+        scrollToTopButton.className = "top-link show";
+    } else {
+        scrollToTopButton.className = "top-link hide";
+    }
+}
+// Scroll to top when button is clicked
+function scrollToTop() {
+    const c = document.documentElement.scrollTop || document.body.scrollTop;
+    if (c>0) {
+        window.requestAnimationFrame(scrollToTop);
+        window.scrollTo(0, c - c / 10);
+    }
+  };
 /**
  * End Main Functions
  * Begin Events
@@ -102,12 +120,17 @@ buildNav();
 // Scroll to section on link click
 scrollToAnchor();
 
-
-document.addEventListener('scroll',() => {
+document.addEventListener('scroll',(event) => {
     // Set sections as active 
     makeActive();
-
     // Hide header when there is no scroll
     hideHeader();
-
+    // Show back to top button when enough scroll
+    showBackToTop();
 });
+
+// Move to top when back to top button clicked
+scrollToTopButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    scrollToTop();
+})
