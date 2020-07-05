@@ -20,6 +20,8 @@
 const fragment = document.createDocumentFragment();
 const navBar = document.getElementById('navbar__list');
 const sections = document.querySelectorAll('main section');
+const header = document.querySelector('.page__header');
+let isScrolling;
 /**
  * End Global Variables
  * Start Helper Functions
@@ -30,7 +32,7 @@ function buildList(listItem, index) {
     const listName = listItem.getAttribute('data-nav');
     const listId = listItem.getAttribute('id');
     newList.setAttribute("data-navlist", listId);
-    newList.innerHTML = `<a href='#${listId}'>${listName}</a>`;
+    newList.innerHTML = `<a href='#${listId}' class='menu__link'>${listName}</a>`;
     fragment.appendChild(newList);
 }
 
@@ -38,7 +40,7 @@ function addSectionClass(section) {
     const box = section.getBoundingClientRect();
     const currentSectionId = section.getAttribute('id');
     const currentNavLink = document.querySelector(`#navbar__list li[data-navlist="${currentSectionId}"]`);
-    if (box.top <= 750 && box.bottom >= 750) {
+    if (box.top <= 590 && box.bottom >= 590) {
         section.classList.add('active-section');
         currentNavLink.classList.add('active-link');
     } else {
@@ -81,6 +83,14 @@ function scrollToAnchor() {
     links.forEach(buildScroll);
 } 
 
+// Hide header when there is no scroll
+function hideHeader() {
+    header.style.display = "flex";
+    window.clearTimeout( isScrolling );
+	isScrolling = setTimeout(() => {
+        header.style.display = "none";
+	}, 1000);
+}
 /**
  * End Main Functions
  * Begin Events
@@ -92,5 +102,12 @@ buildNav();
 // Scroll to section on link click
 scrollToAnchor();
 
-// Set sections as active
-document.addEventListener('scroll',() => { makeActive();});
+
+document.addEventListener('scroll',() => {
+    // Set sections as active 
+    makeActive();
+
+    // Hide header when there is no scroll
+    hideHeader();
+
+});
