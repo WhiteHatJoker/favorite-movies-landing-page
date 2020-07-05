@@ -59,6 +59,14 @@ function buildScroll(menuLink) {
     });
 }
 
+function hideContent(headerTitle) {
+    headerTitle.addEventListener("click", (event) => {
+        const content = headerTitle.nextElementSibling;
+        content.classList.toggle('active-collapse');
+        content.parentElement.parentElement.classList.toggle('shrink-height');
+    });
+}
+
 /**
  * End Helper Functions
  * Begin Main Functions
@@ -108,7 +116,13 @@ function scrollToTop() {
         window.requestAnimationFrame(scrollToTop);
         window.scrollTo(0, c - c / 10);
     }
-  };
+};
+
+// Collapse content when title is clicked
+function collapseTitles() {
+    const collapseHeaders = document.querySelectorAll(".collapsible");
+    collapseHeaders.forEach(hideContent);
+}
 /**
  * End Main Functions
  * Begin Events
@@ -134,3 +148,5 @@ scrollToTopButton.addEventListener('click', (event) => {
     event.preventDefault();
     scrollToTop();
 })
+
+collapseTitles();

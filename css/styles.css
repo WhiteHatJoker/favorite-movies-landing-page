@@ -105,6 +105,19 @@ section {
     text-decoration: underline;;
 }
 
+/* Collapsible Styles */
+.collapsible {
+    cursor: pointer;
+}
+  
+.active-collapse {
+    display:none;
+}
+
+.shrink-height {
+    min-height: auto;
+}
+
 /* Footer Styles */
 .page__footer {
     background: #000;
