@@ -303,3 +303,38 @@ section.active-section .landing__container::after {
 		           rotate(-360deg);
 	}
 }
+
+/* Media queries */
+@media only screen and (max-width: 750px) {
+    .landing__container .content {
+        flex-direction: column;
+    }
+
+    img.poster {
+        margin-right: 0;
+    }
+
+    section:nth-of-type(even) .content {
+        flex-direction: column;
+    }
+
+    section:nth-of-type(even) img.poster {
+        margin-left: 0;
+    }
+
+    .landing__container h2 {
+        text-align: center;
+    }
+
+    .page__header {
+        height: auto;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
+    h2 {
+        font-size: 28px;
+    }
+}
