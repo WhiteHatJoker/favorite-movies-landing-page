@@ -118,6 +118,27 @@ section {
     min-height: auto;
 }
 
+/* Content Styles */
+.landing__container .content {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+section:nth-of-type(even) .content {
+    flex-direction: row-reverse;
+}
+
+img.poster {
+    margin-right: 40px;
+    border: 1px solid white;
+}
+
+section:nth-of-type(even) img.poster {
+    margin-right: 0;
+    margin-left: 40px;
+}
+
 /* Footer Styles */
 .page__footer {
     background: #000;
@@ -178,7 +199,7 @@ svg:hover {
 
 @media only screen and (min-width: 35em){
     .landing__container {
-        max-width: 50em;
+        max-width: 60em;
         padding: 4em;
     }
 }
